@@ -1,6 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :set_prototype, except: [:index, :new, :create]
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, only: [:new, :create, :edit, :update, :destroy]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
@@ -60,7 +60,7 @@ class PrototypesController < ApplicationController
 
   def move_to_index
     unless user_signed_in?
-      redirect_to action: :index
+      redirect_to root_path
     end
   end
 end
