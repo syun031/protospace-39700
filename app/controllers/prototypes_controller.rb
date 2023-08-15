@@ -1,6 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :set_prototype, except: [:index, :new, :create]
-
+  before_action :require_login, only: [:edit]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
